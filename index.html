@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verónica - Asistente de Compras Virtuales</title>
+    <title>Verónica - Asistencia de Compras a Domicilio</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -24,8 +24,9 @@
                             navy: '#0F2C59',
                             blue: '#1A5F7A',
                             teal: '#00A896',
-                            orange: '#F77F00',
-                            lightBg: '#F8FAF2',
+                            meliYellow: '#FFE600',
+                            meliDark: '#2D3277',
+                            warmOrange: '#E85D04',
                             whatsapp: '#25D366'
                         }
                     }
@@ -35,12 +36,16 @@
     </script>
     <style>
         .glass-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(226, 232, 240, 0.8);
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.9);
         }
-        .text-glow {
-            text-shadow: 0 2px 10px rgba(0, 168, 150, 0.3);
+        @keyframes float-subtle {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        .animate-float {
+            animation: float-subtle 4s ease-in-out infinite;
         }
         @keyframes pulse-subtle {
             0%, 100% { transform: scale(1); }
@@ -58,19 +63,19 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <a href="#" class="flex items-center gap-3">
                 <div class="w-12 h-12 rounded-2xl bg-brand-navy flex items-center justify-center text-white shadow-md">
-                    <i class="fa-solid fa-bag-shopping text-2xl text-teal-400"></i>
+                    <i class="fa-solid fa-house-user text-2xl text-teal-400"></i>
                 </div>
                 <div>
                     <span class="text-2xl font-extrabold tracking-tight text-brand-navy">Verónica</span>
-                    <span class="block text-xs font-bold text-teal-600 uppercase tracking-wider">Asistente de Compras</span>
+                    <span class="block text-xs font-bold text-teal-600 uppercase tracking-wider">Acompañamiento a Domicilio</span>
                 </div>
             </a>
 
-            <!-- Botón directo de teléfono/WhatsApp en barra superior -->
-            <div class="flex items-center gap-4">
-                <a href="https://wa.me/573113065375?text=Hola%20Ver%C3%B3nica,%20necesito%20ayuda%20para%20hacer%20una%20compra" target="_blank" class="hidden sm:flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-5 py-2.5 rounded-xl transition-all shadow-md">
+            <!-- Botón de contacto directo -->
+            <div class="flex items-center gap-3">
+                <a href="https://wa.me/573113065375?text=Hola%20Ver%C3%B3nica,%20quisiera%20agendar%20una%20visita%20a%20domicilio%20para%20ayuda%20con%20compras%20en%20Mercado%20Libre" target="_blank" class="hidden sm:flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-5 py-2.5 rounded-xl transition-all shadow-md">
                     <i class="fa-brands fa-whatsapp text-xl"></i>
-                    <span>311 306 5375</span>
+                    <span>Agendar Cita: 311 306 5375</span>
                 </a>
                 <a href="tel:3113065375" class="sm:hidden flex items-center justify-center w-11 h-11 bg-brand-navy text-white rounded-xl text-lg">
                     <i class="fa-solid fa-phone"></i>
@@ -80,88 +85,292 @@
     </nav>
 
     <!-- Sección Principal / Hero -->
-    <section class="pt-28 pb-16 md:pt-36 md:pb-24 bg-gradient-to-b from-sky-50 via-teal-50/30 to-slate-50">
+    <section class="pt-28 pb-16 md:pt-36 md:pb-24 bg-gradient-to-b from-amber-50/50 via-sky-50/50 to-slate-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-12 gap-12 items-center">
                 
                 <!-- Columna de Texto -->
-                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-100/80 text-teal-900 font-bold text-sm border border-teal-200">
-                        <i class="fa-solid fa-heart text-rose-500"></i>
-                        <span>Especializada en adultos mayores y movilidad reducida</span>
+                <div class="lg:col-span-6 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-100 text-amber-900 font-bold text-sm border border-yellow-300">
+                        <i class="fa-solid fa-shield-halved text-amber-600 text-base"></i>
+                        <span>Especialista en Mercado Libre y Tiendas Online Seguras</span>
                     </div>
 
                     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-navy leading-tight">
-                        Verónica te acompaña a hacer tus <span class="text-teal-600 underline decoration-amber-400">compras en internet</span>
+                        Te acompaño en casa a comprar en <span class="bg-yellow-300 text-slate-900 px-2 py-0.5 rounded-lg underline decoration-blue-600">Mercado Libre</span> y más
                     </h1>
 
-                    <p class="text-lg sm:text-xl text-slate-700 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                        ¿Quieres comprar productos online pero te resulta complicado o no tienes tarjeta? Verónica te ayuda paso a paso con amabilidad, paciencia y total seguridad.
+                    <p class="text-lg sm:text-xl text-slate-700 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-medium">
+                        ¿Quieres comprar productos por internet pero te genera desconfianza o dificultad?
+                        <strong>Voy personalmente a tu hogar</strong> para buscar exactamente lo que necesitas en Mercado Libre, comparar precios, verificar vendedores confiables y realizar la compra juntos con total seguridad.
                     </p>
 
-                    <!-- Lista de beneficios destacados -->
-                    <div class="grid sm:grid-cols-3 gap-4 pt-2 max-w-xl mx-auto lg:mx-0">
-                        <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-3">
-                            <i class="fa-solid fa-laptop text-teal-600 text-xl"></i>
-                            <span class="font-bold text-slate-800 text-sm">Compras en línea</span>
+                    <!-- Tarjetas rápidas de propuesta de valor -->
+                    <div class="grid sm:grid-cols-3 gap-3 pt-2 max-w-xl mx-auto lg:mx-0">
+                        <div class="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-3">
+                            <i class="fa-solid fa-handshake-simple text-blue-600 text-xl"></i>
+                            <span class="font-bold text-slate-800 text-xs sm:text-sm">Vendedores 100% Verificados</span>
                         </div>
-                        <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-3">
-                            <i class="fa-solid fa-shield-halved text-emerald-600 text-xl"></i>
-                            <span class="font-bold text-slate-800 text-sm">Pagos seguros</span>
+                        <div class="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-3">
+                            <i class="fa-solid fa-lock text-emerald-600 text-xl"></i>
+                            <span class="font-bold text-slate-800 text-xs sm:text-sm">Compra Protegida</span>
                         </div>
-                        <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-3">
-                            <i class="fa-solid fa-truck-fast text-amber-500 text-xl"></i>
-                            <span class="font-bold text-slate-800 text-sm">Envíos a domicilio</span>
+                        <div class="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-3">
+                            <i class="fa-solid fa-truck-fast text-amber-600 text-xl"></i>
+                            <span class="font-bold text-slate-800 text-xs sm:text-sm">Seguimiento hasta la puerta</span>
                         </div>
                     </div>
 
                     <!-- Botones de Acción -->
                     <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                        <a href="https://wa.me/573113065375?text=Hola%20Ver%C3%B3nica,%20me%20gustar%C3%ADa%20recibir%20ayuda%20para%20comprar" target="_blank" class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xl px-8 py-4 rounded-2xl shadow-lg shadow-emerald-600/30 transition-all flex items-center justify-center gap-3 animate-pulse-subtle">
+                        <a href="https://wa.me/573113065375?text=Hola%20Ver%C3%B3nica,%20quiero%20agendar%20una%20visita%20a%20mi%20casa%20para%20que%20me%20ayudes%20a%20comprar%20en%20Mercado%20Libre" target="_blank" class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xl px-8 py-4 rounded-2xl shadow-lg shadow-emerald-600/30 transition-all flex items-center justify-center gap-3 animate-pulse-subtle">
                             <i class="fa-brands fa-whatsapp text-2xl"></i>
-                            <span>Escribir por WhatsApp</span>
+                            <span>Agendar Visita por WhatsApp</span>
                         </a>
                         <a href="tel:3113065375" class="w-full sm:w-auto bg-brand-navy hover:bg-slate-800 text-white font-bold text-lg px-7 py-4 rounded-2xl transition-all flex items-center justify-center gap-3">
                             <i class="fa-solid fa-phone"></i>
-                            <span>Llamar al 311 306 5375</span>
+                            <span>Llamar: 311 306 5375</span>
                         </a>
                     </div>
                 </div>
 
-                <!-- Columna Visual e Ilustración -->
-                <div class="lg:col-span-5">
-                    <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border-2 border-teal-100 relative">
-                        <div class="text-center mb-6">
-                            <div class="w-20 h-20 rounded-full bg-teal-500 text-white mx-auto flex items-center justify-center text-3xl font-extrabold shadow-md mb-3">
-                                V
-                            </div>
-                            <h3 class="text-2xl font-bold text-brand-navy">Tu Asistente Personal</h3>
-                            <p class="text-slate-500 text-sm">Te acompañamos en tus tiendas favoritas</p>
+                <!-- Columna Ilustración Caricatura Profesional -->
+                <div class="lg:col-span-6 flex flex-col items-center justify-center">
+                    <div class="relative w-full max-w-xl bg-white rounded-3xl p-6 shadow-2xl border-2 border-yellow-200 overflow-hidden">
+                        
+                        <!-- Badges Flotantes Destacados -->
+                        <div class="absolute top-4 left-4 z-10 bg-yellow-400 text-slate-900 border border-yellow-500 font-extrabold text-xs px-3.5 py-2 rounded-xl shadow-lg flex items-center gap-1.5 animate-float">
+                            <i class="fa-solid fa-handshake text-blue-900"></i> Mercado Libre
+                        </div>
+                        <div class="absolute top-4 right-4 z-10 bg-emerald-600 text-white font-bold text-xs px-3.5 py-2 rounded-xl shadow-lg flex items-center gap-1.5 animate-float" style="animation-delay: 1s;">
+                            <i class="fa-solid fa-shield-check"></i> Compra Protegida
+                        </div>
+                        <div class="absolute bottom-16 left-4 z-10 bg-sky-600 text-white font-bold text-xs px-3 py-1.5 rounded-lg shadow-md animate-float" style="animation-delay: 2s;">
+                            📦 Mercado Envíos
+                        </div>
+                        <div class="absolute bottom-16 right-4 z-10 bg-pink-500 text-white font-bold text-xs px-3 py-1.5 rounded-lg shadow-md animate-float" style="animation-delay: 1.5s;">
+                            👗 Shein / Temu
                         </div>
 
-                        <!-- Tiendas apoyadas -->
-                        <div class="space-y-3">
-                            <p class="text-xs font-bold text-slate-400 uppercase tracking-wider text-center">Tiendas donde compramos contigo:</p>
-                            <div class="grid grid-cols-2 gap-3 text-center">
-                                <div class="p-3 bg-slate-100 rounded-xl font-bold text-slate-700 hover:bg-teal-50 hover:text-teal-700 transition-colors">
-                                    🛒 Mercado Libre
-                                </div>
-                                <div class="p-3 bg-slate-100 rounded-xl font-bold text-slate-700 hover:bg-teal-50 hover:text-teal-700 transition-colors">
-                                    🛍️ Shein
-                                </div>
-                                <div class="p-3 bg-slate-100 rounded-xl font-bold text-slate-700 hover:bg-teal-50 hover:text-teal-700 transition-colors">
-                                    📦 Temu
-                                </div>
-                                <div class="p-3 bg-slate-100 rounded-xl font-bold text-slate-700 hover:bg-teal-50 hover:text-teal-700 transition-colors">
-                                    🛵 Rappi / Super
-                                </div>
-                            </div>
+                        <!-- CARICATURA SVG PROFESIONAL: Verónica + Señora Mayor + Mercado Libre -->
+                        <div class="w-full py-1">
+                            <svg viewBox="0 0 850 680" class="w-full h-auto drop-shadow-lg" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <!-- Gradientes profesionales de sombras y acabados -->
+                                    <linearGradient id="bgCircleGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#FFFBEB"/>
+                                        <stop offset="60%" stop-color="#FEF3C7"/>
+                                        <stop offset="100%" stop-color="#E0F2FE"/>
+                                    </linearGradient>
+                                    <linearGradient id="sofaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" stop-color="#1E293B"/>
+                                        <stop offset="100%" stop-color="#0F172A"/>
+                                    </linearGradient>
+                                    <linearGradient id="meliYellowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#FFE600"/>
+                                        <stop offset="100%" stop-color="#FACC15"/>
+                                    </linearGradient>
+                                    <linearGradient id="youngShirtGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#0D9488"/>
+                                        <stop offset="100%" stop-color="#0F766E"/>
+                                    </linearGradient>
+                                    <linearGradient id="elderCardiganGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#2563EB"/>
+                                        <stop offset="100%" stop-color="#1D4ED8"/>
+                                    </linearGradient>
+                                    <linearGradient id="screenGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#FFFFFF"/>
+                                        <stop offset="100%" stop-color="#F8FAFC"/>
+                                    </linearGradient>
+                                    
+                                    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+                                        <feDropShadow dx="0" dy="10" stdDeviation="8" flood-color="#0F172A" flood-opacity="0.12"/>
+                                    </filter>
+                                </defs>
+
+                                <!-- Fondo Aura Calida -->
+                                <circle cx="425" cy="340" r="310" fill="url(#bgCircleGlow)"/>
+
+                                <!-- Planta decorativa de fondo (Hogar acogedor) -->
+                                <g id="home-decor" opacity="0.85">
+                                    <path d="M 110,340 C 100,280 120,220 150,180 C 160,230 140,290 110,340 Z" fill="#15803D"/>
+                                    <path d="M 130,350 C 140,290 170,240 210,210 C 200,260 170,310 130,350 Z" fill="#16A34A"/>
+                                    <path d="M 120,380 L 100,500 L 160,500 L 140,380 Z" fill="#D97706"/> <!-- Maceta -->
+                                </g>
+
+                                <!-- Sofá Ejecutivo de Sala -->
+                                <g id="sofa" filter="url(#softShadow)">
+                                    <path d="M 150,380 C 150,310 200,290 250,290 L 600,290 C 650,290 700,310 700,380 L 720,530 C 720,560 690,580 660,580 L 190,580 C 160,580 130,560 130,530 Z" fill="url(#sofaGrad)"/>
+                                    <path d="M 160,430 Q 425,450 690,430 L 700,540 C 700,560 680,570 660,570 L 190,570 C 170,570 150,560 150,540 Z" fill="#020617"/>
+                                    <!-- Cojín con detalles de costura -->
+                                    <rect x="150" y="370" width="85" height="120" rx="18" fill="#F59E0B" opacity="0.9"/>
+                                    <rect x="615" y="370" width="85" height="120" rx="18" fill="#2563EB" opacity="0.9"/>
+                                </g>
+
+                                <!-- ===== SEÑORA MAYOR (Cliente Sonriente y Confiada) ===== -->
+                                <g id="elderly-lady-pro">
+                                    <!-- Tronco y Vestuario Elegante -->
+                                    <path d="M 230,340 C 230,280 290,270 320,270 C 350,270 370,300 370,380 L 370,490 L 240,490 Z" fill="url(#elderCardiganGrad)"/>
+                                    <path d="M 285,290 L 315,290 L 310,430 L 290,430 Z" fill="#FFFFFF"/> <!-- Blusa interna limpia -->
+                                    
+                                    <!-- Collar elegante -->
+                                    <path d="M 285,295 Q 300,310 315,295" stroke="#FBBF24" stroke-width="4" fill="none"/>
+
+                                    <!-- Cuello y Cabeza -->
+                                    <rect x="290" y="245" width="22" height="30" rx="8" fill="#FED7AA"/>
+                                    <path d="M 270,205 C 270,165 332,165 332,205 C 332,245 270,245 270,205 Z" fill="#FED7AA"/>
+                                    
+                                    <!-- Cabello Canoso Estilizado -->
+                                    <circle cx="301" cy="155" r="24" fill="#E2E8F0"/> <!-- Moño pulcro -->
+                                    <path d="M 265,195 C 265,155 337,155 337,195 C 332,165 270,165 265,195 Z" fill="#CBD5E1"/>
+                                    
+                                    <!-- Expresión Facial Cálida -->
+                                    <path d="M 283,198 Q 290,190 297,198" stroke="#334155" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+                                    <path d="M 307,198 Q 314,190 321,198" stroke="#334155" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+                                    
+                                    <!-- Lentes Modernos -->
+                                    <rect x="278" y="190" width="22" height="18" rx="6" fill="none" stroke="#DC2626" stroke-width="3"/>
+                                    <rect x="304" y="190" width="22" height="18" rx="6" fill="none" stroke="#DC2626" stroke-width="3"/>
+                                    <line x1="300" y1="199" x2="304" y2="199" stroke="#DC2626" stroke-width="3"/>
+
+                                    <path d="M 300,208 Q 303,212 300,215" stroke="#E2A87C" stroke-width="2.5" fill="none"/>
+                                    <path d="M 288,222 Q 301,236 314,222" stroke="#B91C1C" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+                                    <circle cx="278" cy="216" r="7" fill="#FCA5A5" opacity="0.5"/>
+                                    <circle cx="324" cy="216" r="7" fill="#FCA5A5" opacity="0.5"/>
+
+                                    <!-- Brazo Sosteniendo la Tablet con Comodidad -->
+                                    <path d="M 350,330 Q 385,370 425,390" stroke="url(#elderCardiganGrad)" stroke-width="26" stroke-linecap="round" fill="none"/>
+                                    <circle cx="430" cy="395" r="13" fill="#FED7AA"/>
+                                </g>
+
+                                <!-- ===== VERÓNICA (Asistente Profesional de Compras) ===== -->
+                                <g id="veronica-pro">
+                                    <!-- Cuerpo / Blazer Profesional Verde Teal -->
+                                    <path d="M 480,260 C 510,260 580,270 580,340 L 580,490 L 450,490 L 450,340 C 450,280 460,260 480,260 Z" fill="url(#youngShirtGrad)"/>
+                                    <path d="M 505,270 L 525,270 L 515,380 Z" fill="#FFFFFF"/> <!-- Solapa limpia -->
+                                    
+                                    <!-- Cabeza y Cuello -->
+                                    <rect x="495" y="235" width="22" height="28" rx="6" fill="#FDBA74"/>
+                                    <path d="M 470,192 C 470,152 542,152 542,192 C 542,232 470,232 470,192 Z" fill="#FDBA74"/>
+
+                                    <!-- Cabello Castaño Oscuro Elegante y Pulcro -->
+                                    <path d="M 465,182 C 460,125 547,125 547,182 C 547,188 547,205 542,210 C 537,158 475,158 465,182 Z" fill="#291D18"/>
+                                    <path d="M 470,178 Q 506,152 542,172 Q 520,192 470,178 Z" fill="#452E23"/>
+                                    <path d="M 542,182 C 567,188 577,218 562,243 C 552,228 547,208 542,182 Z" fill="#291D18"/>
+
+                                    <!-- Ojos Claros y Sonrisa Profesional -->
+                                    <ellipse cx="492" cy="188" rx="4.5" ry="6.5" fill="#0F172A"/>
+                                    <ellipse cx="520" cy="188" rx="4.5" ry="6.5" fill="#0F172A"/>
+                                    <circle cx="493" cy="186" r="2" fill="#FFFFFF"/>
+                                    <circle cx="521" cy="186" r="2" fill="#FFFFFF"/>
+                                    <path d="M 485,178 Q 492,174 499,178" stroke="#291D18" stroke-width="2.5" fill="none"/>
+                                    <path d="M 513,178 Q 520,174 527,178" stroke="#291D18" stroke-width="2.5" fill="none"/>
+
+                                    <path d="M 492,206 Q 506,220 520,206 Z" fill="#E11D48"/>
+                                    <path d="M 494,206 Q 506,211 518,206" stroke="#FFFFFF" stroke-width="2" fill="none"/>
+                                    <circle cx="483" cy="202" r="6" fill="#FB7185" opacity="0.5"/>
+                                    <circle cx="529" cy="202" r="6" fill="#FB7185" opacity="0.5"/>
+
+                                    <!-- Auricular Inteligente de Asistencia -->
+                                    <path d="M 472,178 A 36,36 0 0,1 540,178" stroke="#0F172A" stroke-width="4" fill="none"/>
+                                    <path d="M 537,182 L 537,205 L 522,209" stroke="#0F172A" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                                    <circle cx="520" cy="209" r="4" fill="#FFE600"/>
+
+                                    <!-- Brazos guiando en la pantalla -->
+                                    <path d="M 465,310 Q 435,350 450,390" stroke="url(#youngShirtGrad)" stroke-width="24" stroke-linecap="round" fill="none"/>
+                                    <circle cx="452" cy="395" r="12" fill="#FDBA74"/>
+                                    
+                                    <!-- Brazo señalando con la mano -->
+                                    <path d="M 480,320 Q 445,360 422,370" stroke="url(#youngShirtGrad)" stroke-width="20" stroke-linecap="round" fill="none"/>
+                                    <path d="M 422,370 L 410,366" stroke="#FDBA74" stroke-width="6" stroke-linecap="round"/>
+                                </g>
+
+                                <!-- ===== LA TABLET MOSTRANDO MERCADO LIBRE OFICIAL ===== -->
+                                <g id="tablet-mercadolibre" filter="url(#softShadow)">
+                                    <!-- Pantalla Tablet -->
+                                    <rect x="345" y="325" width="160" height="120" rx="14" fill="#1E293B" stroke="#475569" stroke-width="3.5"/>
+                                    <rect x="353" y="333" width="144" height="104" rx="8" fill="url(#screenGlass)"/>
+                                    
+                                    <!-- INTERFAZ REALISTA DE MERCADO LIBRE -->
+                                    <!-- Header Amarillo Mercado Libre -->
+                                    <path d="M 353,341 C 353,337 357,333 361,333 L 489,333 C 493,333 497,337 497,341 L 497,362 L 353,362 Z" fill="url(#meliYellowGrad)"/>
+                                    
+                                    <!-- LOGO MERCADO LIBRE (Apretón de Manos / Ovalo) -->
+                                    <ellipse cx="375" cy="347" rx="12" ry="7" fill="#2D3277"/>
+                                    <path d="M 368,347 C 372,343 378,343 382,347" stroke="#FFE600" stroke-width="2" fill="none"/>
+                                    <!-- Buscador -->
+                                    <rect x="393" y="340" width="85" height="14" rx="7" fill="#FFFFFF"/>
+                                    <text x="400" y="350" font-family="sans-serif" font-size="7.5" font-weight="bold" fill="#64748B">Buscar en Mercado Libre...</text>
+                                    <circle cx="470" cy="347" r="4" fill="#2D3277"/>
+
+                                    <!-- Banner Promocional "ENVÍO GRATIS & COMPRA PROTEGIDA" -->
+                                    <rect x="359" y="366" width="132" height="16" rx="4" fill="#2563EB"/>
+                                    <text x="425" y="377" font-family="sans-serif" font-size="7.5" font-weight="extrabold" fill="#FFFFFF" text-anchor="middle">⚡ ENVÍO GRATIS LLEGA MAÑANA</text>
+
+                                    <!-- Tarjetas de Productos en Mercado Libre -->
+                                    <!-- Producto 1: Electrodoméstico / Cafetera -->
+                                    <rect x="359" y="386" width="41" height="45" rx="5" fill="#FFFFFF" stroke="#E2E8F0"/>
+                                    <rect x="364" y="390" width="31" height="22" rx="3" fill="#FEF3C7"/>
+                                    <path d="M 374,394 L 385,394 L 382,408 L 377,408 Z" fill="#78350F"/>
+                                    <text x="380" y="419" font-family="sans-serif" font-size="6.5" font-weight="extrabold" fill="#15803D" text-anchor="middle">$129.900</text>
+                                    <text x="380" y="426" font-family="sans-serif" font-size="5" font-weight="bold" fill="#2563EB" text-anchor="middle">⚡ FULL</text>
+
+                                    <!-- Producto 2: Zapato Cómodo -->
+                                    <rect x="404" y="386" width="41" height="45" rx="5" fill="#FFFFFF" stroke="#E2E8F0"/>
+                                    <rect x="409" y="390" width="31" height="22" rx="3" fill="#EFF6FF"/>
+                                    <path d="M 412,405 C 412,397 428,397 437,405 L 412,405 Z" fill="#1D4ED8"/>
+                                    <text x="424.5" y="419" font-family="sans-serif" font-size="6.5" font-weight="extrabold" fill="#15803D" text-anchor="middle">$89.000</text>
+                                    <text x="424.5" y="426" font-family="sans-serif" font-size="5" font-weight="bold" fill="#2563EB" text-anchor="middle">⚡ FULL</text>
+
+                                    <!-- Producto 3: Celular / Tablet -->
+                                    <rect x="449" y="386" width="42" height="45" rx="5" fill="#FFFFFF" stroke="#E2E8F0"/>
+                                    <rect x="454" y="390" width="32" height="22" rx="3" fill="#F3E8FF"/>
+                                    <rect x="464" y="393" width="12" height="16" rx="2" fill="#7E22CE"/>
+                                    <text x="470" y="419" font-family="sans-serif" font-size="6.5" font-weight="extrabold" fill="#15803D" text-anchor="middle">$349.000</text>
+                                    <text x="470" y="426" font-family="sans-serif" font-size="5" font-weight="bold" fill="#2563EB" text-anchor="middle">⚡ FULL</text>
+                                </g>
+
+                                <!-- ===== EMBALAJE Y BOLSAS OFICIALES MERCADO LIBRE ===== -->
+                                <g id="mercadolibre-packages" filter="url(#softShadow)">
+                                    <!-- Caja Oficial de Mercado Libre (Cartón con cinta amarilla Mercado Libre) -->
+                                    <g transform="translate(140, 480)">
+                                        <!-- Cuerpo de la Caja -->
+                                        <path d="M 10,25 L 50,5 L 90,25 L 90,70 L 50,90 L 10,70 Z" fill="#D97706"/>
+                                        <path d="M 50,5 L 90,25 L 50,45 L 10,25 Z" fill="#F59E0B"/>
+                                        <path d="M 50,45 L 50,90 L 10,70 L 10,25 Z" fill="#B45309"/>
+                                        <!-- Cinta Amarilla Oficial Meli -->
+                                        <path d="M 30,15 L 70,35 L 70,80 L 30,60 Z" fill="#FFE600" opacity="0.9"/>
+                                        <text x="50" y="50" font-family="sans-serif" font-size="8" font-weight="extrabold" fill="#2D3277" text-anchor="middle" transform="rotate(15 50 50)">MERCADO LIBRE</text>
+                                    </g>
+
+                                    <!-- Bolsa Amarilla de Mercado Libre -->
+                                    <g transform="translate(630, 470)">
+                                        <rect x="0" y="15" width="70" height="85" rx="10" fill="#FFE600" stroke="#FACC15" stroke-width="2"/>
+                                        <!-- Asas -->
+                                        <path d="M 20,15 C 20,-5 50,-5 50,15" stroke="#2D3277" stroke-width="5" fill="none"/>
+                                        <!-- Logo Apretón en la Bolsa -->
+                                        <ellipse cx="35" cy="45" rx="18" ry="11" fill="#2D3277"/>
+                                        <path d="M 25,45 C 31,39 39,39 45,45" stroke="#FFE600" stroke-width="3" fill="none"/>
+                                        <text x="35" y="72" font-family="sans-serif" font-size="9" font-weight="extrabold" fill="#2D3277" text-anchor="middle">mercado</text>
+                                        <text x="35" y="82" font-family="sans-serif" font-size="9" font-weight="extrabold" fill="#2D3277" text-anchor="middle">libre</text>
+                                    </g>
+                                </g>
+
+                                <!-- Destellos de Calidad y Confianza -->
+                                <g id="trust-stars">
+                                    <circle cx="425" cy="270" r="18" fill="#FFE600"/>
+                                    <path d="M 425,258 L 428,266 L 436,266 L 430,271 L 432,279 L 425,274 L 418,279 L 420,271 L 414,266 L 422,266 Z" fill="#2D3277"/>
+                                </g>
+
+                            </svg>
                         </div>
 
-                        <!-- Card Informativa del Número -->
-                        <div class="mt-6 pt-6 border-t border-slate-100 text-center bg-slate-900 text-white rounded-2xl p-4">
-                            <span class="text-xs font-semibold text-amber-400 uppercase tracking-widest block">Contacto Directo</span>
-                            <span class="text-2xl sm:text-3xl font-extrabold tracking-wide text-white block mt-1">311 306 5375</span>
+                        <!-- Pie de la Tarjeta Ilustrativa con Mercado Libre -->
+                        <div class="mt-2 pt-3 border-t border-slate-100 text-center bg-yellow-50 rounded-2xl p-3 border border-yellow-200 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-circle-check text-emerald-600 text-lg"></i>
+                            <span class="text-xs sm:text-sm font-extrabold text-slate-800">
+                                Especialista en Mercado Libre: Compras 100% protegidas y sin errores
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -170,84 +379,178 @@
         </div>
     </section>
 
-    <!-- Sección de Pasos Simples -->
+    <!-- Sección ¿Cómo Funciona la Visita? -->
     <section class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <span class="text-xs font-extrabold uppercase tracking-widest text-teal-600 block mb-2">Proceso Fácil y Guiado</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-navy">¿Cómo funciona el servicio?</h2>
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="text-xs font-extrabold uppercase tracking-widest text-teal-600 block mb-2">Acompañamiento Seguro y Personalizado</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-navy">¿Cómo funciona el servicio a domicilio?</h2>
+                <p class="text-slate-600 mt-2 text-lg">Un proceso transparente diseñado para darte absoluta confianza.</p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
+            <div class="grid md:grid-cols-4 gap-6">
                 <!-- Paso 1 -->
-                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-200 text-center relative space-y-4">
-                    <div class="w-14 h-14 bg-teal-600 text-white rounded-2xl font-extrabold text-2xl flex items-center justify-center mx-auto shadow-md">
+                <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 text-center space-y-3 relative hover:shadow-md transition-all">
+                    <div class="w-12 h-12 bg-teal-600 text-white rounded-2xl font-extrabold text-xl flex items-center justify-center mx-auto shadow-md">
                         1
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900">Nos dices qué necesitas</h3>
-                    <p class="text-slate-600 text-base">
-                        Envías una foto, un mensaje o nos llamas por teléfono explicando el producto que deseas adquirir.
+                    <h3 class="text-lg font-bold text-slate-900">Agendas tu cita</h3>
+                    <p class="text-slate-600 text-sm">
+                        Me llamas o escribes por WhatsApp al <strong>311 306 5375</strong> para acordar el día y la hora de mi visita.
                     </p>
                 </div>
 
                 <!-- Paso 2 -->
-                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-200 text-center relative space-y-4">
-                    <div class="w-14 h-14 bg-teal-600 text-white rounded-2xl font-extrabold text-2xl flex items-center justify-center mx-auto shadow-md">
+                <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 text-center space-y-3 relative hover:shadow-md transition-all">
+                    <div class="w-12 h-12 bg-teal-600 text-white rounded-2xl font-extrabold text-xl flex items-center justify-center mx-auto shadow-md">
                         2
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900">Buscamos la mejor opción</h3>
-                    <p class="text-slate-600 text-base">
-                        Comparamos precios en tiendas confiables y te mostramos las opciones con total claridad.
+                    <h3 class="text-lg font-bold text-slate-900">Llego a tu casa</h3>
+                    <p class="text-slate-600 text-sm">
+                        Voy a tu domicilio de forma puntual. Nos acomodamos con tu computador, tablet o teléfono celular.
                     </p>
                 </div>
 
                 <!-- Paso 3 -->
-                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-200 text-center relative space-y-4">
-                    <div class="w-14 h-14 bg-teal-600 text-white rounded-2xl font-extrabold text-2xl flex items-center justify-center mx-auto shadow-md">
+                <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 text-center space-y-3 relative hover:shadow-md transition-all">
+                    <div class="w-12 h-12 bg-yellow-500 text-slate-900 rounded-2xl font-extrabold text-xl flex items-center justify-center mx-auto shadow-md">
                         3
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900">Llega seguro a tu puerta</h3>
-                    <p class="text-slate-600 text-base">
-                        Gestionamos el pago y el envío seguro para que recibas tu paquete directamente en tu domicilio.
+                    <h3 class="text-lg font-bold text-slate-900">Buscamos en Mercado Libre</h3>
+                    <p class="text-slate-600 text-sm">
+                        Comparamos reputaciones de vendedores, precios y opiniones de otros compradores antes de pagar.
                     </p>
+                </div>
+
+                <!-- Paso 4 -->
+                <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 text-center space-y-3 relative hover:shadow-md transition-all">
+                    <div class="w-12 h-12 bg-emerald-600 text-white rounded-2xl font-extrabold text-xl flex items-center justify-center mx-auto shadow-md">
+                        4
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900">Seguimiento hasta tu puerta</h3>
+                    <p class="text-slate-600 text-sm">
+                        Monitoreamos el envío paso a paso hasta que el paquete esté en tus manos y verifiquemos que llegó perfecto.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Tiendas y Productos -->
+    <section class="py-16 bg-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-3xl font-extrabold text-brand-navy">Tiendas donde realizamos tus compras</h2>
+                <p class="text-slate-600 mt-2 text-lg">Cualquier producto que necesites con respaldo total.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Tarjeta 1 - Mercado Libre Principal -->
+                <div class="bg-gradient-to-b from-yellow-50 to-white p-6 rounded-2xl shadow-sm border-2 border-yellow-300 flex flex-col items-center text-center space-y-3 hover:shadow-md transition-all">
+                    <div class="w-16 h-16 rounded-2xl bg-yellow-400 text-slate-900 flex items-center justify-center text-3xl font-extrabold shadow-sm">
+                        <i class="fa-solid fa-handshake text-blue-900"></i>
+                    </div>
+                    <h3 class="font-extrabold text-slate-900 text-xl">Mercado Libre</h3>
+                    <p class="text-slate-600 text-sm">Especialista principal. Compra protegida de tecnología, hogar, herramientas y ropa.</p>
+                </div>
+
+                <!-- Tarjeta 2 - Shein & Temu -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col items-center text-center space-y-3 hover:border-teal-400 transition-all">
+                    <div class="w-16 h-16 rounded-2xl bg-pink-100 text-pink-600 flex items-center justify-center text-2xl font-bold">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-lg">Shein & Temu</h3>
+                    <p class="text-slate-600 text-sm">Moda, calzado, accesorios, cosas para la cocina y ofertas internacionales.</p>
+                </div>
+
+                <!-- Tarjeta 3 - Supermercados -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col items-center text-center space-y-3 hover:border-teal-400 transition-all">
+                    <div class="w-16 h-16 rounded-2xl bg-teal-100 text-teal-600 flex items-center justify-center text-2xl font-bold">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-lg">Éxito, Falabella & Carulla</h3>
+                    <p class="text-slate-600 text-sm">Mercado del mes, electrodomésticos grandes y víveres con entrega a domicilio.</p>
+                </div>
+
+                <!-- Tarjeta 4 - Salud y Droguerías -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col items-center text-center space-y-3 hover:border-teal-400 transition-all">
+                    <div class="w-16 h-16 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center text-2xl font-bold">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-lg">Droguerías & Salud</h3>
+                    <p class="text-slate-600 text-sm">Medicamentos de venta libre, suplementos nutricionales y artículos médicos.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Preguntas Frecuentes -->
-    <section class="py-16 bg-slate-100">
+    <section class="py-16 bg-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-10">
+                <span class="text-xs font-extrabold uppercase tracking-widest text-teal-600 block mb-2">Tranquilidad Absoluta</span>
                 <h2 class="text-3xl font-extrabold text-brand-navy">Preguntas Frecuentes</h2>
-                <p class="text-slate-600 mt-2">Resolvemos todas tus dudas antes de empezar</p>
             </div>
 
             <div class="space-y-4">
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
-                    <h3 class="font-bold text-lg text-slate-900 mb-2">¿Necesito tener tarjeta de crédito?</h3>
-                    <p class="text-slate-600">No es necesario. Te ayudamos a realizar el pago mediante métodos locales seguros como efectivo, transferencias bancarias o Nequi.</p>
+                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200">
+                    <h3 class="font-bold text-lg text-slate-900 mb-2">
+                        <i class="fa-solid fa-circle-question text-yellow-600 mr-2"></i>
+                        ¿Por qué es más seguro comprar en Mercado Libre conmigo?
+                    </h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        En Mercado Libre hay miles de vendedores. Mi trabajo es revisar que el vendedor tenga reputación verde (alta confianza), que el producto tenga garantía oficial y que el pago se haga mediante "Compra Protegida", para que tu dinero esté 100% a salvo.
+                    </p>
                 </div>
 
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
-                    <h3 class="font-bold text-lg text-slate-900 mb-2">¿Cómo se garantiza que mi compra llegue bien?</h3>
-                    <p class="text-slate-600">Monitoreamos el número de guía en todo momento hasta que el paquete llegue a tus manos y confirmes que todo está en orden.</p>
+                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200">
+                    <h3 class="font-bold text-lg text-slate-900 mb-2">
+                        <i class="fa-solid fa-circle-question text-teal-600 mr-2"></i>
+                        ¿Cómo se realiza el pago del producto y de la visita?
+                    </h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        El pago del producto lo haces directamente a la plataforma (Mercado Libre, Éxito, etc.) en efectivo en Efecty/Baloto, o con tu tarjeta o PSE. Mi tarifa por acompañamiento a domicilio es fija y se abona al finalizar la cita.
+                    </p>
+                </div>
+
+                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200">
+                    <h3 class="font-bold text-lg text-slate-900 mb-2">
+                        <i class="fa-solid fa-circle-question text-teal-600 mr-2"></i>
+                        ¿Atiendes a adultos mayores o personas con movilidad reducida?
+                    </h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        ¡Sí, es mi especialidad! Tengo toda la paciencia para explicar cada paso, tomar el tiempo necesario sin afán y asegurar que la persona se sienta cómoda y respetada en todo momento.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Botón flotante de WhatsApp permanente -->
-    <a href="https://wa.me/573113065375?text=Hola%20Ver%C3%B3nica,%20necesito%20ayuda" target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-500 text-white p-4 rounded-full shadow-2xl hover:bg-emerald-600 hover:scale-110 transition-all flex items-center justify-center">
-        <i class="fa-brands fa-whatsapp text-3xl"></i>
+    <!-- Llamado a la Acción Final -->
+    <section class="py-14 bg-gradient-to-r from-brand-navy via-slate-900 to-blue-950 text-white text-center">
+        <div class="max-w-4xl mx-auto px-4 space-y-6">
+            <h2 class="text-3xl sm:text-4xl font-extrabold">¿Hacemos tus compras en Mercado Libre juntas?</h2>
+            <p class="text-slate-300 text-lg">Agenda tu visita presencial hoy mismo. Te atiendo con mucho gusto.</p>
+            <div class="pt-2">
+                <a href="https://wa.me/573113065375?text=Hola%20Ver%C3%B3nica,%20quiero%20solicitar%20una%20visita%20a%20domicilio%20para%20compras%20en%20Mercado%20Libre" target="_blank" class="inline-flex items-center gap-3 bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-xl px-8 py-4 rounded-2xl shadow-xl transition-all">
+                    <i class="fa-brands fa-whatsapp text-2xl"></i>
+                    <span>Escribir a WhatsApp: 311 306 5375</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Botón Flotante de WhatsApp -->
+    <a href="https://wa.me/573113065375?text=Hola%20Ver%C3%B3nica,%20necesito%20ayuda%20presencial%20para%20compras%20en%20Mercado%20Libre" target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white p-4 rounded-full shadow-2xl transition-all flex items-center justify-center text-3xl group" title="Contactar por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
     </a>
 
     <!-- Footer -->
-    <footer class="bg-brand-navy text-white py-12 text-center">
-        <div class="max-w-7xl mx-auto px-4">
-            <p class="text-xl font-bold mb-2">Asistente de Compras Virtuales - Verónica</p>
-            <p class="text-slate-300 text-sm mb-4">Llamadas y WhatsApp: <strong>311 306 5375</strong></p>
-            <p class="text-xs text-slate-400">© 2026 Todos los derechos reservados.</p>
+    <footer class="bg-slate-950 text-slate-400 py-8 text-center text-sm border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 space-y-2">
+            <p class="font-bold text-white text-base">Verónica - Asistente Personal de Compras a Domicilio</p>
+            <p>Acompañamiento presencial para Mercado Libre, tiendas online y domicilios.</p>
+            <p class="text-xs text-slate-500 pt-2">© 2026 Todos los derechos reservados.</p>
         </div>
     </footer>
 

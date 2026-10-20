@@ -124,7 +124,7 @@
 
                     <!-- Botón de audio sobre la foto -->
                     <audio id="audioServicio" preload="none" src="audio/servicio-ximena.mp3"></audio>
-                    <button type="button" id="btnAudio" aria-label="Escuchar mensaje" onclick="var a=document.getElementById('audioServicio'),i=this.querySelector('i');if(a.paused){a.play();i.className='fa-solid fa-pause text-3xl'}else{a.pause();i.className='fa-solid fa-play text-3xl ml-1'}" class="absolute z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full bg-white/50 hover:bg-white/70 backdrop-blur-sm text-brand-navy shadow-xl flex items-center justify-center transition-all"><i class="fa-solid fa-play text-3xl ml-1"></i></button>
+                    <button type="button" id="btnAudio" aria-label="Escuchar mensaje" onclick="var a=document.getElementById('audioServicio'),i=this.querySelector('i');if(a.paused){a.play();i.className='fa-solid fa-pause text-3xl'}else{a.pause();i.className='fa-solid fa-play text-3xl ml-1'}" class="absolute z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-full bg-emerald-600/90 hover:bg-emerald-700 text-white ring-4 ring-white shadow-2xl animate-pulse-subtle flex items-center justify-center transition-all"><i class="fa-solid fa-play text-3xl ml-1"></i></button>
                     <script>document.getElementById('audioServicio').addEventListener('ended',function(){document.querySelector('#btnAudio i').className='fa-solid fa-play text-3xl ml-1'});</script>
                     <!-- IMAGEN -->
                     <div class="w-full overflow-hidden rounded-2xl">

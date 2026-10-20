@@ -123,6 +123,10 @@
                         <div class="absolute bottom-6 left-6 z-10 bg-slate-900 text-white font-extrabold text-xs px-3.5 py-2 rounded-xl shadow-lg flex items-center gap-1.5 animate-float" style="animation-delay: 2s;"><i class="fa-brands fa-amazon"></i> Amazon</div>
                         <div class="absolute bottom-6 right-6 z-10 bg-orange-600 text-white font-extrabold text-xs px-3.5 py-2 rounded-xl shadow-lg flex items-center gap-1.5 animate-float" style="animation-delay: 3s;"><i class="fa-solid fa-bag-shopping"></i> Temu</div>
 
+                    <!-- Botón de audio sobre la foto -->
+                    <audio id="audioServicio" preload="none" src="audio/servicio-ximena.mp3"></audio>
+                    <button type="button" id="btnAudio" aria-label="Escuchar mensaje" onclick="var a=document.getElementById('audioServicio'),i=this.querySelector('i');if(a.paused){a.play();i.className='fa-solid fa-pause text-3xl'}else{a.pause();i.className='fa-solid fa-play text-3xl ml-1'}" class="absolute z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full bg-white/50 hover:bg-white/70 backdrop-blur-sm text-brand-navy shadow-xl flex items-center justify-center transition-all"><i class="fa-solid fa-play text-3xl ml-1"></i></button>
+                    <script>document.getElementById('audioServicio').addEventListener('ended',function(){document.querySelector('#btnAudio i').className='fa-solid fa-play text-3xl ml-1'});</script>
                     <!-- IMAGEN -->
                     <div class="w-full overflow-hidden rounded-2xl">
                         <img src="Ul.jpeg" alt="Asistencia de compras online a domicilio" class="w-full h-auto object-cover rounded-2xl shadow-inner">
@@ -135,11 +139,6 @@
                     ¿Quieres comprar por internet pero te genera dudas o desconfianza? 
                     <strong>Vamos personalmente a tu hogar</strong> para buscar exactamente lo que necesitas, comparar precios, verificar vendedores confiables y hacer la compra juntos con total calma y seguridad.
                 </p>
-                <!-- Audio del texto descriptivo -->
-                <div class="flex flex-col items-center gap-2 w-full max-w-md">
-                    <p class="text-base font-bold text-teal-700"><i class="fa-solid fa-volume-high"></i> Escucha este mensaje</p>
-                    <audio controls preload="none" class="w-full" src="audio/servicio-ximena.mp3">Tu navegador no puede reproducir audio.</audio>
-                </div>
 
 
     <!-- Sección de Pasos / Cómo Funciona -->
